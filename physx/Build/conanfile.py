@@ -31,14 +31,23 @@ class sampleRecipe(ConanFile):
         copy( self, "*.a", local_lib_dir, os.path.join( self.package_folder, "lib" ), keep_path = False )
 
     def package_info(self):
-        self.cpp_info.libs = [
-            "PhysX_static_64", 
-            "PhysXCommon_static_64",
-            "PhysXExtensions_static_64",
-            "PhysXPvdSDK_static_64",
-            #"PhysX_static_64", <-- There is a circular dependency which must be hand edited into projects using the PhysX library on Linux
-            "PhysXFoundation_static_64",
-            "PhysXCooking_static_64"
-        ]
-        #if self.settings.os == "Linux":
-        #    [ "lib" + s for s in libList ]
+        if self.settings.os == "Linux":
+            self.cpp_info.libs = [
+                "PhysX_static_64", 
+                "PhysXCommon_static_64",
+                "PhysXExtensions_static_64",
+                "PhysXFoundation_static_64",
+                "PhysXCooking_static_64"
+            ]
+    
+        else:
+            self.cpp_info.libs = [
+                "PhysX_static_64", 
+                "PhysXCommon_static_64",
+                "PhysXExtensions_static_64",
+                "PhysXPvdSDK_static_64",
+                #"PhysX_static_64", <-- There is a circular dependency which must be hand edited into projects using the PhysX library on Linux
+                "PhysXFoundation_static_64",
+                "PhysXCooking_static_64"
+            ]
+            #    [ "lib" + s for s in libList ]
