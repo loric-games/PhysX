@@ -12,7 +12,7 @@ class sampleRecipe(ConanFile):
         self.folders.source = self.folders.build
         self.cpp.includedirs = ["include"]
         
-        osSubDir = "win.x86_64.vc142.mt"
+        osSubDir = "win.x86_64.vc143.mt"
         if self.settings.os == "Linux":
             osSubDir = "linux.clang"
             
@@ -23,7 +23,7 @@ class sampleRecipe(ConanFile):
         if self.settings.os == "Windows":
             self.cpp.build.libdirs = [ 
                 os.path.join( "bin", osSubDir, buildTypeSubDir ),
-                os.path.join( "compiler", "vc16win64", "sdk_source_bin", buildTypeSubDir )
+                os.path.join( "compiler", "vc17win64", "sdk_source_bin", buildTypeSubDir )
             ]         
         else:
             self.cpp.build.libdirs = [ 

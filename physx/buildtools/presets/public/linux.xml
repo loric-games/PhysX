@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preset name="linux" comment="Linux clang PhysX SDK general settings">
-  <platform targetPlatform="linux" compiler="clang" />
+  <platform targetPlatform="linux" compiler="g++" />
   <CMakeSwitches>
     <cmakeSwitch name="PX_BUILDSNIPPETS" value="False" comment="Generate the snippets" />
     <cmakeSwitch name="PX_BUILDPVDRUNTIME" value="False" comment="Generate the OmniPVD project" />
